@@ -1,0 +1,29 @@
+{
+  "name": "assembly-script-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests",
+    "asbuild:mandelbrot": "asc assembly/mandelbrot.ts --target mandelbrot --runtime stub --use Math=JSMath --importMemory",
+    "asbuild:game-of-life": "asc assembly/game-of-life.ts --target game-of-life --runtime stub --use Math=JSMath --importMemory",
+    "asbuild": "npm run asbuild:mandelbrot && npm run asbuild:game-of-life",
+    "start": "npx serve ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "assemblyscript": "^0.27.29"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./build/release.js",
+      "types": "./build/release.d.ts"
+    }
+  },
+  "dependencies": {
+    "benchmark": "^2.1.4"
+  }
+}
